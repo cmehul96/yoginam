@@ -1,0 +1,399 @@
+/* --- Global Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Modern sans-serif */
+    line-height: 1.7;
+    color: #333; /* Dark grey text */
+    background-color: #fdfdfd; /* Slightly off-white background */
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif; /* Elegant serif for headings */
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a2a45; /* Deep Indigo/Navy */
+}
+
+h1 {
+    font-size: 3rem; /* Responsive units preferred */
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #2c3e50; /* Slightly lighter navy */
+}
+
+p {
+    margin-bottom: 15px;
+    font-weight: 300; /* Lighter weight for body */
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+    color: #e67e22; /* Saffron/Marigold accent */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #d35400; /* Darker Saffron */
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Layout & Container --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.content-section {
+    padding: 80px 0;
+    opacity: 0; /* Initially hidden for fade-in */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.alt-bg {
+    background-color: #f4f7f6; /* Very light grey/green tint */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a2a45; /* Deep Indigo */
+}
+.logo:hover {
+    color: #1a2a45;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px;
+}
+
+header nav ul li a {
+    color: #333;
+    font-weight: 400;
+    padding-bottom: 5px; /* Space for potential underline animation */
+    position: relative;
+}
+header nav ul li a::after { /* Subtle hover effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e67e22; /* Saffron accent */
+    transition: width 0.3s ease;
+}
+
+header nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+.menu-toggle { /* Basic mobile menu toggle - JS needed for functionality */
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1a2a45;
+}
+
+
+/* --- Hero Section --- */
+#hero {
+    min-height: 85vh;
+    background: linear-gradient(rgba(26, 42, 69, 0.7), rgba(26, 42, 69, 0.7)), url('https://images.unsplash.com/photo-1508614999368-405fb337c4ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0OTE0MjV8MHwxfGFsbHx8fHx8fHx8fDE3MTI2Njc0ODR8&ixlib=rb-4.0.3&q=80&w=1600') no-repeat center center/cover; /* Example image - REPLACE */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; /* For potential overlays */
+}
+
+.hero-content h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #eee; /* Slightly dimmer white */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Buttons --- */
+.button, .cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px; /* Rounded */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+.cta-button {
+    background-color: #e67e22; /* Saffron/Marigold */
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.cta-button:hover {
+    background-color: #d35400; /* Darker Saffron */
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.button {
+    background-color: #1a2a45; /* Deep Indigo */
+    color: #fff;
+    margin-right: 10px; /* Space between buttons */
+}
+.button.store-button {
+    background-color: #fff;
+    color: #1a2a45;
+    border: 1px solid #1a2a45;
+}
+
+.button:hover {
+    background-color: #2c3e50; /* Lighter Indigo */
+    color: #fff;
+    transform: translateY(-2px);
+}
+.button.store-button:hover {
+     background-color: #f4f7f6;
+     color: #1a2a45;
+}
+
+/* --- Motif Divider --- */
+.motif-divider {
+    width: 80px;
+    height: 2px;
+    background-color: #e67e22; /* Saffron accent */
+    border: none;
+    margin: 15px auto 30px auto; /* Centered */
+}
+
+/* --- Featured App Section --- */
+.app-showcase {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Space between image and text */
+}
+
+.app-image {
+    flex-basis: 35%; /* Adjust as needed */
+    text-align: center;
+}
+
+.app-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Optional subtle rounding */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.app-details {
+    flex-basis: 65%;
+}
+
+.app-details h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.app-details ul {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.app-details ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.app-details .icon { /* Simple text icons for now */
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #e67e22; /* Saffron accent */
+}
+
+.app-buttons {
+    margin-top: 20px;
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: #1a2a45; /* Deep Indigo */
+    color: #ccc; /* Light grey text */
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .footer-nav {
+    margin-bottom: 15px;
+}
+
+footer .footer-nav a {
+    color: #ccc;
+    margin: 0 10px;
+}
+footer .footer-nav a:hover {
+    color: #fff;
+}
+
+footer .social-links {
+    margin-bottom: 15px;
+    /* Add styles for social icons here */
+}
+footer .social-links a {
+     color: #ccc;
+     margin: 0 8px;
+     font-size: 1.2rem; /* If using icon font */
+}
+footer .social-links a:hover {
+    color: #e67e22; /* Saffron accent on hover */
+}
+
+footer p {
+    margin-bottom: 5px;
+    color: #aaa; /* Dimmer text for copyright */
+}
+footer p small {
+    color: #888; /* Even dimmer for the location */
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    header nav ul {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Below header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+     header nav ul.active { /* Class added by JS to show menu */
+        display: flex;
+    }
+
+    header nav ul li {
+        margin: 10px 20px; /* Adjust spacing for vertical menu */
+        text-align: center;
+    }
+     header nav ul li a::after { /* Remove hover line for mobile */
+        display: none;
+    }
+
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    #hero {
+        min-height: 70vh;
+    }
+
+    .app-showcase {
+        flex-direction: column; /* Stack image and text */
+        text-align: center;
+    }
+
+    .app-details h2 {
+        text-align: center;
+    }
+    .app-details ul li {
+        justify-content: center; /* Center list items */
+    }
+
+    .app-image {
+       margin-bottom: 30px;
+    }
+     .app-image img {
+         max-width: 60%; /* Make image smaller */
+    }
+
+
+    .content-section {
+        padding: 60px 0;
+    }
+}
